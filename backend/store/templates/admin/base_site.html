@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+
+{% block branding %}
+<div id="site-name">
+    <a href="{% url 'admin:index' %}">
+        🌰 DRY FRUITS FARM ADMIN
+    </a>
+</div>
+{% endblock %}
+
+{% block nav-global %}
+<div style="margin-top: 10px; margin-bottom: 10px;">
+    <a href="/"
+       style="
+           display: inline-block;
+           background: #8b5e3c;
+           color: white;
+           padding: 8px 16px;
+           border-radius: 6px;
+           text-decoration: none;
+           font-weight: bold;
+       ">
+        ← Back to Home
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Dry Fruits Farm</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            Dry Fruits Farm
+        </div>
+
+        <p class="tagline">
+            Healthy • Fresh • Premium Quality
+        </p>
+
+    </header>
+
+
+    <nav class="navbar">
+
+        <a href="/products/">Home</a>
+
+        <a href="/products/">Products</a>
+
+        <a href="/cart/">Cart</a>
+
+        <a href="/login/">Login</a>
+
+        <a href="/register/">Register</a>
+
+        <a href="/admin/">Admin</a>
+
+    </nav>
+
+
+    <section class="auth-page">
+
+        <div class="auth-box">
+
+            <p class="section-title">
+                WELCOME BACK
+            </p>
+
+            <h1>
+                Login
+            </h1>
+
+            <p class="auth-subtitle">
+                Login to your Dry Fruits Farm account.
+            </p>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label>
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                {% if error %}
+
+                    <p>
+                        {{ error }}
+                    </p>
+
+                {% endif %}
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <p class="auth-link">
+
+                Don't have an account?
+
+                <a href="/register/">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <h3>
+            Dry Fruits Farm
+        </h3>
+
+        <p>
+            Fresh Dry Fruits For A Healthy Life
+        </p>
+
+        <p>
+            © 2026 Dry Fruits Farm. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

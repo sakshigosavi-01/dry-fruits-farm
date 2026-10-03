@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - Dry Fruits Farm</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            Dry Fruits Farm
+        </div>
+
+        <p class="tagline">
+            Healthy • Fresh • Premium Quality
+        </p>
+
+    </header>
+
+
+    <nav class="navbar">
+
+        <a href="/">Home</a>
+
+        <a href="/products/">Products</a>
+
+        <a href="/cart/">Cart</a>
+
+        <a href="/login/">Login</a>
+
+        <a href="/register/">Register</a>
+
+        <a href="/admin/">Admin</a>
+
+    </nav>
+
+
+    <section class="products-hero">
+
+        <p class="section-title">
+            DRY FRUITS FARM
+        </p>
+
+        <h1>
+            Our Products
+        </h1>
+
+        <p>
+            Fresh and premium quality dry fruits for a healthy life.
+        </p>
+
+    </section>
+
+
+    <section class="products-section">
+
+        <div class="products-heading">
+
+            <p class="section-title">
+                OUR PRODUCTS
+            </p>
+
+            <h2>
+                Choose Your Favourite Dry Fruits
+            </h2>
+
+        </div>
+
+
+        <div class="products-container">
+
+            {% for product in products %}
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    {% if product.image %}
+
+                        <img
+                            src="{{ product.image.url }}"
+                            alt="{{ product.name }}"
+                        >
+
+                    {% else %}
+
+                        🥜
+
+                    {% endif %}
+
+                </div>
+
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+
+                <p>
+                    {{ product.description }}
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹{{ product.price }} / kg
+                    </span>
+
+
+                    <button
+                        onclick="addToCart('{{ product.name|escapejs }}', '{{ product.price }}')"
+                    >
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            {% empty %}
+
+            <p>
+                No products available.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <h3>
+            Dry Fruits Farm
+        </h3>
+
+        <p>
+            Fresh Dry Fruits For A Healthy Life
+        </p>
+
+        <p>
+            © 2026 Dry Fruits Farm. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function addToCart(productName, productPrice) {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+
+            cart.push({
+
+                name: productName,
+
+                price: productPrice
+
+            });
+
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+
+            alert(
+                productName + " added to cart!"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

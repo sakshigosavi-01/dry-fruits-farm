@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - Dry Fruits Farm</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            Dry Fruits Farm
+        </div>
+
+        <p class="tagline">
+            Healthy • Fresh • Premium Quality
+        </p>
+
+    </header>
+
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+
+    </nav>
+
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+
+        <p class="section-title">
+            DRY FRUITS FARM
+        </p>
+
+        <h1>Our Products</h1>
+
+        <p>
+            Fresh and premium quality dry fruits for a healthy life.
+        </p>
+
+    </section>
+
+
+    <!-- Products -->
+    <section class="products-section">
+
+        <div class="products-heading">
+
+            <p class="section-title">
+                OUR PRODUCTS
+            </p>
+
+            <h2>
+                Choose Your Favourite Dry Fruits
+            </h2>
+
+        </div>
+
+
+        <div class="products-container">
+
+
+            <!-- Almonds -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🥜
+                </div>
+
+                <h3>
+                    Almonds (Badam)
+                </h3>
+
+                <p>
+                    Fresh and premium quality almonds.
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹850 / kg
+                    </span>
+
+                    <button onclick="addToCart('Almonds (Badam)')">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Cashews -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🌰
+                </div>
+
+                <h3>
+                    Cashews (Kaju)
+                </h3>
+
+                <p>
+                    Rich, creamy and premium quality cashews.
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹950 / kg
+                    </span>
+
+                    <button onclick="addToCart('Cashews (Kaju)')">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Raisins -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🍇
+                </div>
+
+                <h3>
+                    Raisins (Manuka)
+                </h3>
+
+                <p>
+                    Sweet and natural quality raisins.
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹500 / kg
+                    </span>
+
+                    <button onclick="addToCart('Raisins (Manuka)')">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dates -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🍯
+                </div>
+
+                <h3>
+                    Dates (Khajur)
+                </h3>
+
+                <p>
+                    Soft, fresh and naturally sweet dates.
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹650 / kg
+                    </span>
+
+                    <button onclick="addToCart('Dates (Khajur)')">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pistachios -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🥜
+                </div>
+
+                <h3>
+                    Pistachios (Pista)
+                </h3>
+
+                <p>
+                    Crunchy and premium quality pistachios.
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹1200 / kg
+                    </span>
+
+                    <button onclick="addToCart('Pistachios (Pista)')">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Walnuts -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🌰
+                </div>
+
+                <h3>
+                    Walnuts (Akhrot)
+                </h3>
+
+                <p>
+                    Fresh and nutritious quality walnuts.
+                </p>
+
+                <div class="product-bottom">
+
+                    <span class="price">
+                        ₹1100 / kg
+                    </span>
+
+                    <button onclick="addToCart('Walnuts (Akhrot)')">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>
+            Dry Fruits Farm
+        </h3>
+
+        <p>
+            Fresh Dry Fruits For A Healthy Life
+        </p>
+
+        <p>
+            © 2026 Dry Fruits Farm. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function addToCart(productName) {
+
+            alert(productName + " added to cart!");
+
+        }
+
+    </script>
+
+</body>
+</html>

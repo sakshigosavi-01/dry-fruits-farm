@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cart - Dry Fruits Farm</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">Dry Fruits Farm</div>
+
+        <p class="tagline">
+            Healthy • Fresh • Premium Quality
+        </p>
+    </header>
+
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+
+
+    <section class="cart-page">
+
+        <div class="cart-heading">
+
+            <p class="section-title">SHOPPING CART</p>
+
+            <h1>Your Cart</h1>
+
+            <p>
+                Review your selected dry fruits before checkout.
+            </p>
+
+        </div>
+
+
+        <div class="cart-container">
+
+            <div class="cart-items" id="cartItems">
+
+                <!-- Products will appear here -->
+
+            </div>
+
+
+            <div class="cart-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₹0</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span>Free</span>
+                </div>
+
+                <hr>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="total">₹0</span>
+                </div>
+
+                <button class="checkout-btn" onclick="checkout()">
+                    Proceed to Checkout
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <h3>Dry Fruits Farm</h3>
+
+        <p>Fresh Dry Fruits For A Healthy Life</p>
+
+        <p>© 2026 Dry Fruits Farm. All Rights Reserved.</p>
+
+    </footer>
+
+
+    <script>
+
+        function loadCart() {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let cartItems = document.getElementById("cartItems");
+
+            let subtotal = 0;
+
+            cartItems.innerHTML = "";
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+                    <p>
+                        Your cart is empty.
+                    </p>
+                `;
+
+                document.getElementById("subtotal").innerText = "₹0";
+                document.getElementById("total").innerText = "₹0";
+
+                return;
+            }
+
+
+            cart.forEach((product, index) => {
+
+                let price = Number(product.price);
+
+                subtotal += price;
+
+                cartItems.innerHTML += `
+
+                    <div class="cart-item">
+
+                        <div class="cart-item-image">
+                            🥜
+                        </div>
+
+                        <div class="cart-item-details">
+
+                            <h3>
+                                ${product.name}
+                            </h3>
+
+                            <p>
+                                ₹${price} / kg
+                            </p>
+
+                        </div>
+
+                        <div class="quantity">
+                            Quantity: 1
+                        </div>
+
+                        <div class="item-price">
+                            ₹${price}
+                        </div>
+
+                        <button
+                            onclick="removeItem(${index})"
+                            style="margin-left:10px;"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            document.getElementById("subtotal").innerText =
+                "₹" + subtotal;
+
+            document.getElementById("total").innerText =
+                "₹" + subtotal;
+
+        }
+
+
+        function removeItem(index) {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.splice(index, 1);
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            loadCart();
+
+        }
+
+
+        function checkout() {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            if (cart.length === 0) {
+
+                alert("Your cart is empty!");
+
+                return;
+            }
+
+            alert("Proceeding to checkout!");
+
+        }
+
+
+        loadCart();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Manage Products - Dry Fruits Farm</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+    .admin-products-page {
+        padding: 45px 7%;
+        min-height: 65vh;
+    }
+
+    .products-heading {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    .products-heading .section-title {
+        color: #8b5e3c;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .products-heading h1 {
+        color: #4b2e1f;
+        font-size: 36px;
+        margin: 10px 0;
+    }
+
+    .products-heading p {
+        color: #6b5140;
+    }
+
+    .product-actions {
+        max-width: 1100px;
+        margin: 0 auto 25px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .add-product-btn {
+        background: #8b5e3c;
+        color: white;
+        border: none;
+        padding: 12px 22px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .add-product-btn:hover {
+        background: #4b2e1f;
+    }
+
+    .product-table-box {
+        max-width: 1100px;
+        margin: auto;
+        background: #fffaf3;
+        border: 1px solid #e4d2bd;
+        border-radius: 16px;
+        overflow-x: auto;
+        box-shadow: 0 5px 20px rgba(75, 46, 31, 0.12);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 850px;
+    }
+
+    th {
+        background: #4b2e1f;
+        color: white;
+        padding: 15px;
+        text-align: left;
+    }
+
+    td {
+        padding: 14px 15px;
+        border-bottom: 1px solid #e4d2bd;
+        color: #4b2e1f;
+    }
+
+    tr:hover td {
+        background: #fff7ed;
+    }
+
+    .product-image {
+        width: 65px;
+        height: 65px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #e4d2bd;
+    }
+
+    .no-image {
+        width: 65px;
+        height: 65px;
+        border-radius: 8px;
+        background: #f1e3d2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+    }
+
+    .status-active {
+        color: green;
+        font-weight: bold;
+    }
+
+    .status-inactive {
+        color: #b33a3a;
+        font-weight: bold;
+    }
+
+    .stock-text {
+        font-weight: bold;
+    }
+
+    .back-btn {
+        display: block;
+        width: fit-content;
+        margin: 25px auto 0;
+        background: #4b2e1f;
+        color: white;
+        text-decoration: none;
+        padding: 11px 22px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .back-btn:hover {
+        background: #8b5e3c;
+    }
+
+    .empty-message {
+        text-align: center;
+        padding: 35px;
+        color: #6b5140;
+        font-size: 17px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header class="header">
+
+    <div class="logo">
+        🌰 Dry Fruits Farm
+    </div>
+
+    <p class="tagline">
+        Healthy • Fresh • Premium Quality
+    </p>
+
+</header>
+
+
+<nav class="navbar">
+
+    <a href="/admin-dashboard/">
+        Admin Dashboard
+    </a>
+
+    <a href="/admin-products/">
+        Products
+    </a>
+
+    <a href="/cart/">
+        Cart
+    </a>
+
+    <a href="/">
+        Home
+    </a>
+
+</nav>
+
+
+<section class="admin-products-page">
+
+    <div class="products-heading">
+
+        <p class="section-title">
+            PRODUCT MANAGEMENT
+        </p>
+
+        <h1>
+            Manage Products
+        </h1>
+
+        <p>
+            Add, view and manage your dry fruit products.
+        </p>
+
+    </div>
+
+
+    <div class="product-actions">
+
+        <button
+            class="add-product-btn"
+            onclick="window.location.href='/admin-products/add/'"
+        >
+            + Add Product
+        </button>
+
+    </div>
+
+
+    <div class="product-table-box">
+
+        {% if products %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Image
+                    </th>
+
+                    <th>
+                        Product Name
+                    </th>
+
+                    <th>
+                        Price
+                    </th>
+
+                    <th>
+                        Stock
+                    </th>
+
+                    <th>
+                        Availability
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for product in products %}
+
+                <tr>
+
+                    <td>
+
+                        {% if product.image %}
+
+                            <img
+                                src="{{ product.image.url }}"
+                                alt="{{ product.name }}"
+                                class="product-image"
+                            >
+
+                        {% else %}
+
+                            <div class="no-image">
+                                🌰
+                            </div>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+                            {{ product.name }}
+                        </strong>
+
+                        <br>
+
+                        <small>
+                            {{ product.description }}
+                        </small>
+
+                    </td>
+
+
+                    <td>
+                        ₹{{ product.price }}
+                    </td>
+
+
+                    <td class="stock-text">
+                        {{ product.stock }}
+                    </td>
+
+
+                    <td>
+
+                        {% if product.available %}
+
+                            <span class="status-active">
+                                Available
+                            </span>
+
+                        {% else %}
+
+                            <span class="status-inactive">
+                                Not Available
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        {% if product.available %}
+
+                            <span class="status-active">
+                                Active
+                            </span>
+
+                        {% else %}
+
+                            <span class="status-inactive">
+                                Inactive
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+        <div class="empty-message">
+
+            <p>
+                No products found.
+            </p>
+
+            <p>
+                Click <strong>+ Add Product</strong> to add your first product.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <a
+        href="/admin-dashboard/"
+        class="back-btn"
+    >
+        ← Back to Dashboard
+    </a>
+
+</section>
+
+
+<footer>
+
+    <h3>
+        🌰 Dry Fruits Farm
+    </h3>
+
+    <p>
+        Fresh Dry Fruits For A Healthy Life
+    </p>
+
+    <p>
+        © 2026 Dry Fruits Farm. All Rights Reserved.
+    </p>
+
+</footer>
+```
+
+</body>
+</html>

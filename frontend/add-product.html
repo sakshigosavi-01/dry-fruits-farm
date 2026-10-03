@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Add Product - Dry Fruits Farm</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+    .add-product-page {
+        padding: 45px 7%;
+        min-height: 65vh;
+    }
+
+    .add-heading {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .add-heading .section-title {
+        color: #8b5e3c;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .add-heading h1 {
+        color: #4b2e1f;
+        font-size: 36px;
+        margin: 10px 0;
+    }
+
+    .add-heading p {
+        color: #6b5140;
+    }
+
+    .product-form {
+        max-width: 650px;
+        margin: auto;
+        background: #fffaf3;
+        padding: 30px;
+        border: 1px solid #e4d2bd;
+        border-radius: 18px;
+        box-shadow: 0 5px 20px rgba(75, 46, 31, 0.12);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        color: #4b2e1f;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        border: 1px solid #d9c2aa;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    .form-group textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #8b5e3c;
+    }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .checkbox-group input {
+        width: auto;
+    }
+
+    .save-btn {
+        width: 100%;
+        background: #8b5e3c;
+        color: white;
+        border: none;
+        padding: 13px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .save-btn:hover {
+        background: #4b2e1f;
+    }
+
+    .back-btn {
+        display: block;
+        width: fit-content;
+        margin: 25px auto 0;
+        background: #4b2e1f;
+        color: white;
+        text-decoration: none;
+        padding: 11px 22px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .back-btn:hover {
+        background: #8b5e3c;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header class="header">
+    <div class="logo">🌰 Dry Fruits Farm</div>
+
+    <p class="tagline">
+        Healthy • Fresh • Premium Quality
+    </p>
+</header>
+
+<nav class="navbar">
+    <a href="/admin-dashboard/">Admin Dashboard</a>
+    <a href="/admin-products/">Products</a>
+    <a href="/">Home</a>
+</nav>
+
+<section class="add-product-page">
+
+    <div class="add-heading">
+
+        <p class="section-title">PRODUCT MANAGEMENT</p>
+
+        <h1>Add New Product</h1>
+
+        <p>
+            Add a new dry fruit product to your store.
+        </p>
+
+    </div>
+
+    <form
+        class="product-form"
+        method="POST"
+        action="/admin-products/add/"
+        enctype="multipart/form-data"
+    >
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            <label for="name">
+                Product Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Example: Almonds (Badam)"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="description">
+                Description
+            </label>
+
+            <textarea
+                id="description"
+                name="description"
+                placeholder="Enter product description"
+                required
+            ></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="price">
+                Price (₹)
+            </label>
+
+            <input
+                type="number"
+                id="price"
+                name="price"
+                step="0.01"
+                min="0"
+                placeholder="Example: 500"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="stock">
+                Stock
+            </label>
+
+            <input
+                type="number"
+                id="stock"
+                name="stock"
+                min="0"
+                placeholder="Example: 20"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="image">
+                Product Image
+            </label>
+
+            <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+            >
+
+        </div>
+
+        <div class="form-group checkbox-group">
+
+            <input
+                type="checkbox"
+                id="available"
+                name="available"
+                checked
+            >
+
+            <label for="available">
+                Product Available
+            </label>
+
+        </div>
+
+        <button
+            type="submit"
+            class="save-btn"
+        >
+            + Add Product
+        </button>
+
+    </form>
+
+    <a
+        href="/admin-products/"
+        class="back-btn"
+    >
+        ← Back to Products
+    </a>
+
+</section>
+
+<footer>
+
+    <h3>🌰 Dry Fruits Farm</h3>
+
+    <p>Fresh Dry Fruits For A Healthy Life</p>
+
+    <p>© 2026 Dry Fruits Farm. All Rights Reserved.</p>
+
+</footer>
+```
+
+</body>
+</html>
